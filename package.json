@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@react-google-maps/api": "^2.20.8",
+    "framer-motion": "^12.36.0",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^0.577.0"
+  }
+}
