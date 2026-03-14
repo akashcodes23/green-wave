@@ -113,6 +113,13 @@ Before GreenWave AI          After GreenWave AI
 
 ## 🎬 Live Demo
 
+## 🎥 10-Second System Demo
+
+<p align="center">
+<img src="assets/demo.gif" width="90%" />
+</p>
+
+Dispatch an ambulance → AI calculates corridor → signals clear → ambulance reaches hospital.
 
 **→ [greenwave-ai.vercel.app](https://greenwave-ai.vercel.app)**
 
@@ -227,9 +234,14 @@ def sig_state(sig, progress, n):
 
 ---
 
-## 🏗 Architecture
+## 🏗 System Architecture
+
+<p align="center">
+<img src="assets/architecture.png" width="90%" />
+</p>
 
 ```
+
 ┌────────────────────────────────────────────────────────────────────┐
 │                          GREENWAVE AI                              │
 │                                                                    │
@@ -572,6 +584,24 @@ ambulance/
 - [ ] Open API standard for other Indian cities
 
 ---
+## 🧠 What Makes GreenWave Different
+
+| Traditional System | GreenWave AI |
+|--------------------|--------------|
+Manual police escort | Autonomous signal clearing |
+Static green corridor | Dynamic AI routing |
+Local intersection control | City-wide coordination |
+Hardware installation | Software-only deployment |
+
+## 📊 Impact Metrics
+
+| Metric | Value |
+|------|------|
+Ambulance dispatches/day | 420 |
+Critical emergencies | 147 |
+Average time saved | 7.5 minutes |
+Potential lives saved/day | 110 |
+Projected annual impact | 40,000 lives |
 
 ## 👥 Team Alpha_4
 
