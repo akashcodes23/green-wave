@@ -228,10 +228,6 @@ def sig_state(sig, progress, n):
 
 ## 🏗 System Architecture
 
-<p align="center">
-<img src="assets/architecture.png" width="90%" />
-</p>
-
 ```
 
 ┌────────────────────────────────────────────────────────────────────┐
