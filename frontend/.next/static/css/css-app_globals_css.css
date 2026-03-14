@@ -9,12 +9,15 @@
   --bg-card:    #0a1520;
   --border:     #0e2035;
   --border-hi:  #1a3a55;
-  --cyan:       #00e5ff;
-  --cyan-dim:   #007a99;
-  --green:      #00ff88;
-  --green-dim:  #005533;
-  --red:        #ff2244;
-  --amber:      #ffaa00;
+  --cyan:       #00f0ff;
+  --cyan-dim:   #0088aa;
+  --green:      #00ffaa;
+  --green-dim:  #006644;
+  --red:        #ff2040;
+  --amber:      #ffb300;
+  --glow-cyan:  drop-shadow(0 0 8px rgba(0, 240, 255, 0.4));
+  --glow-green: drop-shadow(0 0 8px rgba(0, 255, 170, 0.4));
+  --glow-red:   drop-shadow(0 0 8px rgba(255, 32, 64, 0.4));
   --text-hi:    #e0f4ff;
   --text-mid:   #6a9ab8;
   --text-dim:   #2a4a62;
@@ -95,3 +98,53 @@ html, body {
   from { transform:rotate(0deg); }
   to   { transform:rotate(360deg); }
 }
+@keyframes corridor-pulse {
+  0%,100% { opacity:0.85; filter:drop-shadow(0 0 6px rgba(0,255,136,0.6)); }
+  50%      { opacity:1;    filter:drop-shadow(0 0 18px rgba(0,255,136,1)); }
+}
+@keyframes odometer {
+  from { opacity:0; transform:translateY(8px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes detection-ring {
+  0%   { box-shadow:0 0 0 0 rgba(0,255,136,0.8), inset 0 0 0 0 rgba(0,255,136,0.3); }
+  50%  { box-shadow:0 0 14px 4px rgba(0,255,136,0.5), inset 0 0 12px rgba(0,255,136,0.2); }
+  100% { box-shadow:0 0 0 0 rgba(0,255,136,0), inset 0 0 0 0 rgba(0,255,136,0); }
+}
+@keyframes heatmap-breathe {
+  0%,100% { opacity:0.6; }
+  50%      { opacity:1; }
+}
+@keyframes slide-in-left {
+  from { width:0%; }
+  to   { width:var(--bar-width); }
+}
+@keyframes ai-decision-in {
+  from { opacity:0; transform:translateX(10px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes trigger-flash {
+  0%   { background:rgba(0,255,136,0.6); }
+  100% { background:rgba(0,255,136,0.15); }
+}
+@keyframes confidence-fill {
+  from { width:0%; }
+  to   { width:100%; }
+}@keyframes dispatch-flash {
+  0%   { background:rgba(255,32,64,0.4); box-shadow: inset 0 0 100px rgba(255,32,64,0.3); }
+  60%  { background:rgba(255,32,64,0.1); }
+  100% { background:transparent; box-shadow: none; }
+}
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(-8px) scale(0.97); filter: blur(4px); }
+  to   { opacity:1; transform:translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes neon-pulse {
+  0%, 100% { text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan), 0 0 40px var(--cyan); }
+  50% { text-shadow: 0 0 5px var(--cyan), 0 0 10px var(--cyan), 0 0 20px var(--cyan); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+

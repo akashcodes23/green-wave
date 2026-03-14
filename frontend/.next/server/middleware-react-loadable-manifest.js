@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{\"components\\\\Dashboard.jsx -> @/components/MapView\":{\"id\":\"components\\\\Dashboard.jsx -> @/components/MapView\",\"files\":[\"static/chunks/_app-pages-browser_components_MapView_jsx.js\"]}}"
+self.__REACT_LOADABLE_MANIFEST="{\"components/Dashboard.jsx -> @/components/MapView\":{\"id\":\"components/Dashboard.jsx -> @/components/MapView\",\"files\":[\"static/chunks/_app-pages-browser_components_MapView_jsx.js\"]}}"

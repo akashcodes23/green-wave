@@ -1,4 +1,4 @@
-// File: C:\Users\KEERTHAN BM\OneDrive\Desktop\greenwave\frontend\app\page.jsx
+// File: /Users/akashgpatil/green-wave/green-wave/frontend/app/page.jsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

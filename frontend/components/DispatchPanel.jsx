@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { BANGALORE_ROUTES } from "@/lib/bangaloreRoutes";
+import { useState, useEffect } from "react";
+import { ROUTES } from "@/lib/routes";
 
 function AmbulanceCard({ amb, onRemove }) {
   const fmt     = s => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
@@ -77,6 +77,19 @@ function AmbulanceCard({ amb, onRemove }) {
 
 export default function DispatchPanel({ ambulances, onDispatch, onRemove, onResetAll }) {
   const [selectedRoute, setSelectedRoute] = useState("route1");
+  const [autoDispatch, setAutoDispatch] = useState(false);
+
+  // Auto-dispatch timer loop (every 25 seconds)
+  useEffect(() => {
+    if (!autoDispatch) return;
+    const interval = setInterval(() => {
+      // Pick random route
+      const keys = Object.keys(ROUTES);
+      const randomKey = keys[Math.floor(Math.random() * keys.length)];
+      onDispatch(randomKey);
+    }, 25000);
+    return () => clearInterval(interval);
+  }, [autoDispatch, onDispatch]);
   const ambList = Object.values(ambulances);
 
   return (
@@ -94,7 +107,7 @@ export default function DispatchPanel({ ambulances, onDispatch, onRemove, onRese
         <div>
           <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:8, letterSpacing:2, color:"var(--text-dim)", marginBottom:7 }}>▸ SELECT ROUTE</div>
           <div style={{ display:"flex", flexDirection:"column", gap:5 }}>
-            {Object.entries(BANGALORE_ROUTES).map(([key, r]) => (
+            {Object.entries(ROUTES).map(([key, r]) => (
               <button key={key} onClick={() => setSelectedRoute(key)} style={{
                 background: selectedRoute===key ? "rgba(0,229,255,0.07)" : "var(--bg-card)",
                 border: `1px solid ${selectedRoute===key ? "var(--cyan)" : "var(--border)"}`,
@@ -104,41 +117,27 @@ export default function DispatchPanel({ ambulances, onDispatch, onRemove, onRese
                   {selectedRoute===key ? "▶ " : ""}{r.name}
                 </div>
                 <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:7, color:"var(--text-dim)", marginTop:2 }}>
-                  {r.origin.name.split("(")[0].trim()} · {r.waypoints.length} signals
+                  {r.origin.name.split("(")[0].trim()} · 7 signals
                 </div>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Origin / Dest display */}
-        <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
-          <div style={{ background:"var(--bg-card)", border:"1px solid var(--border-hi)", borderRadius:3, padding:"8px 11px" }}>
-            <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:7, color:"var(--text-dim)", letterSpacing:2, marginBottom:3 }}>ORIGIN</div>
-            <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:10, color:"var(--cyan)" }}>
-              📍 {BANGALORE_ROUTES[selectedRoute].origin.name}
-            </div>
-          </div>
-          <div style={{ background:"var(--bg-card)", border:"1px solid var(--green-dim)", borderRadius:3, padding:"8px 11px" }}>
-            <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:7, color:"var(--text-dim)", letterSpacing:2, marginBottom:3 }}>DESTINATION</div>
-            <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:10, color:"var(--green)" }}>
-              🏥 {BANGALORE_ROUTES[selectedRoute].destination.name}
-            </div>
-          </div>
-        </div>
-
+        {/* Origin / Dest display removed to save space */}
         {/* Dispatch button */}
         <button onClick={() => onDispatch(selectedRoute)} style={{
-          background:"linear-gradient(135deg,#6b0000,var(--red))",
-          border:"1px solid var(--red)", borderRadius:3, padding:"13px",
-          cursor:"pointer", width:"100%", fontFamily:"'Orbitron',sans-serif",
-          fontSize:13, fontWeight:700, color:"#fff", letterSpacing:3,
-          boxShadow:"0 0 30px rgba(255,34,68,0.35)", transition:"box-shadow 0.2s",
-        }}
-          onMouseEnter={e => e.currentTarget.style.boxShadow="0 0 55px rgba(255,34,68,0.7)"}
-          onMouseLeave={e => e.currentTarget.style.boxShadow="0 0 30px rgba(255,34,68,0.35)"}>
-          🚨 DISPATCH AMB
+          width:"100%", background:"linear-gradient(135deg, var(--red) 0%, #aa0022 100%)",
+          color:"#fff", border:"1px solid #ff4466", borderRadius:4, padding:"14px",
+          fontFamily:"'Orbitron',sans-serif", fontWeight:900, fontSize:14, letterSpacing:3,
+          cursor:"pointer", boxShadow:"var(--glow-red)", marginTop:4,
+          animation:"neon-pulse 2s infinite", transition: "transform 0.1s"
+        }}>
+          DISPATCH UNIT 🚑
         </button>
+
+        {/* Note: The old Auto Dispatch toggle that was right here is removed, 
+            since the custom user Dashboard Topbar already has a better one! */}
 
         <div style={{ fontFamily:"'Share Tech Mono',monospace", fontSize:8, color:"var(--text-dim)", textAlign:"center", letterSpacing:1 }}>
           ↑ dispatch multiple simultaneously

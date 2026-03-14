@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { BANGALORE_ROUTES } from "@/lib/bangaloreRoutes";
+import { ROUTES } from "@/lib/routes";
 
 const WS_URL  = "ws://localhost:8000/ws/live";
 const API_URL = "http://localhost:8000";
@@ -13,7 +13,7 @@ export function useSimulation(selectedRoute = "route1") {
 
   const wsRef    = useRef(null);
   const prevStep = useRef(-1);
-  const route    = BANGALORE_ROUTES[selectedRoute];
+  const route    = ROUTES[selectedRoute];
 
   // ── WebSocket ─────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -56,7 +56,7 @@ export function useSimulation(selectedRoute = "route1") {
 
   // ── Dispatch ──────────────────────────────────────────────────────────────
   const dispatch = useCallback(async () => {
-    const r = BANGALORE_ROUTES[selectedRoute];
+    const r = ROUTES[selectedRoute];
     try {
       await fetch(`${API_URL}/dispatch`, {
         method:  "POST",
