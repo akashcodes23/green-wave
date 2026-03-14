@@ -113,14 +113,6 @@ Before GreenWave AI          After GreenWave AI
 
 ## 🎬 Live Demo
 
-## 🎥 10-Second System Demo
-
-<p align="center">
-<img src="assets/demo.gif" width="90%" />
-</p>
-
-Dispatch an ambulance → AI calculates corridor → signals clear → ambulance reaches hospital.
-
 **→ [greenwave-ai.vercel.app](https://greenwave-ai.vercel.app)**
 
 The full system is deployed and running. Open it, hit **DISPATCH UNIT**, and watch the corridor activate in real time on a live Bengaluru road graph.
