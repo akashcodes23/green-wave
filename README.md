@@ -35,6 +35,8 @@
 
 **[🚀 Live Demo](https://greenwave-ai.vercel.app) · [🎬 Features](#-features) · [🏗 Architecture](#-architecture) · [⚡ Quick Start](#-quick-start) · [📡 API Reference](#-api-reference) · [📈 Impact](#-impact--metrics)**
 
+⭐ If this project impresses you, consider giving it a star — it helps bring this solution closer to real-world deployment.
+
 </div>
 
 ---
